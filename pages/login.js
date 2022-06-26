@@ -2,6 +2,7 @@ import Axios from "axios";
 import { UserContext } from "../lib/UserContext";
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
+import { BackendURL } from "../lib/BackendURL";
 
 export default function LoginPage() {
   Axios.defaults.withCredentials = true;
@@ -11,7 +12,7 @@ export default function LoginPage() {
   const Router = useRouter();
 
   const login = () => {
-    Axios.post("http://localhost:3001/auth/login", {
+    Axios.post(`${BackendURL}/auth/login`, {
       username: username,
       password: password,
     }).then((response) => {

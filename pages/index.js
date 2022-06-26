@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import NavBar from "../components/NavBar";
 import Axios from "axios";
+import { BackendURL } from "../lib/BackendURL";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
@@ -18,13 +19,13 @@ export default function Home() {
   const [postFeed, setPostFeed] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/post/all").then((response) => {
+    Axios.get(`${BackendURL}/post/all`).then((response) => {
       setPostFeed(response.data);
     });
   }, []);
 
   const requestToggleLike = (id, isliked) => {
-    Axios.post("http://localhost:3001/post/like", {
+    Axios.post(`${BackendURL}/post/like`, {
       postid: id,
       isliked: isliked,
     }).then((response) => {
@@ -68,7 +69,7 @@ export default function Home() {
           <div className="flex px-4 py-2 border-t border-gray-200 hover:bg-gray-100">
             <div className="mr-3">
               <Image
-                src="http://localhost:3001/images/ufc.jpg"
+                src={`${BackendURL}/images/ufc.jpg`}
                 className="rounded-full"
                 width={50}
                 height={50}
@@ -112,7 +113,7 @@ export default function Home() {
                 <div className="my-2">
                   <Image
                     className="rounded-xl"
-                    src={`http://localhost:3001/images/${value.picture}`}
+                    src={`${BackendURL}/images/${value.picture}`}
                     width={500}
                     height={500}
                     objectFit="cover"

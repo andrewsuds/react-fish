@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Axios from "axios";
+import { BackendURL } from "../../../lib/BackendURL";
 import NavBar from "../../../components/NavBar";
 import {
   FaBalanceScale,
@@ -22,20 +23,18 @@ export default function ProfilePostPage() {
   const { username, postid } = Router.query;
   useEffect(() => {
     if (!Router.isReady) return;
-    Axios.get(`http://localhost:3001/post/one/${postid}`).then((response) => {
+    Axios.get(`${BackendURL}/post/one/${postid}`).then((response) => {
       setPost(response.data);
       setLoading(false);
     });
 
-    Axios.get(`http://localhost:3001/post/comments/${postid}`).then(
-      (response) => {
-        setComments(response.data);
-      }
-    );
+    Axios.get(`${BackendURL}/post/comments/${postid}`).then((response) => {
+      setComments(response.data);
+    });
   }, [Router.isReady]);
 
   const requestToggleLike = (id, isliked) => {
-    Axios.post("http://localhost:3001/post/like", {
+    Axios.post(`${BackendURL}/post/like`, {
       postid: id,
       isliked: isliked,
     }).then((response) => {
@@ -64,18 +63,16 @@ export default function ProfilePostPage() {
   };
 
   const createComment = () => {
-    Axios.post("http://localhost:3001/post/comment", {
+    Axios.post(`${BackendURL}/post/comment`, {
       postid: postid,
       comment: comment,
     }).then((response) => {
       console.log(response.data);
       if (response.data.commented === true) {
         setComment("");
-        Axios.get(`http://localhost:3001/post/comments/${postid}`).then(
-          (response) => {
-            setComments(response.data);
-          }
-        );
+        Axios.get(`${BackendURL}/post/comments/${postid}`).then((response) => {
+          setComments(response.data);
+        });
 
         let newPost = {
           ...post,
@@ -98,7 +95,7 @@ export default function ProfilePostPage() {
           <div className="px-4 pt-3">
             <div className="flex items-center">
               <Image
-                src="http://localhost:3001/images/ufc.jpg"
+                src={`${BackendURL}/images/ufc.jpg`}
                 className="rounded-full"
                 width={50}
                 height={50}
@@ -128,7 +125,7 @@ export default function ProfilePostPage() {
               <div className="mt-2">
                 <Image
                   className="rounded-xl"
-                  src={`http://localhost:3001/images/${post.picture}`}
+                  src={`${BackendURL}/images/${post.picture}`}
                   width={500}
                   height={500}
                   objectFit="cover"
@@ -168,7 +165,7 @@ export default function ProfilePostPage() {
           <div className="flex border-b px-4 py-3 border-gray-200 items-center justify-between">
             <div className="flex items-center">
               <Image
-                src="http://localhost:3001/images/ufc.jpg"
+                src={`${BackendURL}/images/ufc.jpg`}
                 className="rounded-full"
                 width={50}
                 height={50}
@@ -198,7 +195,7 @@ export default function ProfilePostPage() {
               <div className="flex px-4 py-3 border-b border-gray-200">
                 <div>
                   <Image
-                    src="http://localhost:3001/images/ufc.jpg"
+                    src={`${BackendURL}/images/ufc.jpg`}
                     className="rounded-full"
                     width={50}
                     height={50}

@@ -3,6 +3,7 @@ import SideBarIcon from "./SideBarIcon";
 import SideBarCreate from "./SideBarCreate";
 import { UserContext } from "../lib/UserContext";
 import { useEffect, useContext } from "react";
+import { BackendURL } from "../lib/BackendURL";
 import Axios from "axios";
 
 export default function SiteLayout({ children }) {
@@ -10,7 +11,7 @@ export default function SiteLayout({ children }) {
   Axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/auth/login").then((response) => {
+    Axios.get(`${BackendURL}/auth/login`).then((response) => {
       console.log("Logged In: " + response.data.username);
       setUser(response.data.username);
     });

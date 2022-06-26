@@ -1,6 +1,7 @@
 import Axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { BackendURL } from "../lib/BackendURL";
 
 export default function CreatePage() {
   Axios.defaults.withCredentials = true;
@@ -19,7 +20,7 @@ export default function CreatePage() {
     formData.append("length", length);
     formData.append("caption", caption);
     formData.append("speciesid", speciesID);
-    Axios.post("http://localhost:3001/post/create", formData, {
+    Axios.post(`${BackendURL}/post/create`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }).then((response) => {
       console.log(response.data);
