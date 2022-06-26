@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["localhost", "fish-l0pa.onrender.com"],
+    domains: ["localhost", "api.aks22.com"],
   },
 };
 
