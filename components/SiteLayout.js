@@ -50,7 +50,7 @@ export default function SiteLayout({ children }) {
           <SideBarCreate />
         </div>
 
-        <div className="sm:ml-[75px] xl:ml-[275px] flex-1 border-x border-gray-200 min-h-screen">
+        <div className="sm:ml-[75px] xl:ml-[275px] w-screen sm:flex-1 border-x border-gray-200 min-h-screen">
           {children}
         </div>
 
