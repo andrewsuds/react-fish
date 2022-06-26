@@ -66,7 +66,10 @@ export default function Home() {
       <NavBar title="Home" />
       {postFeed.map((value) => {
         return (
-          <div className="flex px-4 py-2 border-t border-gray-200 hover:bg-gray-100">
+          <div
+            key={value.postid}
+            className="flex px-4 py-2 border-t border-gray-200 hover:bg-gray-100"
+          >
             <div className="mr-3">
               <Image
                 src={`${BackendURL}/images/ufc.jpg`}
@@ -97,7 +100,7 @@ export default function Home() {
                 {value.length !== null && (
                   <>
                     <FaRulerHorizontal size={20} />
-                    <div className="ml-1 mr-4">{value.length}"</div>
+                    <div className="ml-1 mr-4">{`${value.length}"`}</div>
                   </>
                 )}
 

@@ -112,7 +112,7 @@ export default function ProfilePostPage() {
               {post.length !== null && (
                 <>
                   <FaRulerHorizontal size={22} />
-                  <div className="ml-1 mr-4">{post.length}"</div>
+                  <div className="ml-1 mr-4">{`${post.length}"`}</div>
                 </>
               )}
 
@@ -192,7 +192,10 @@ export default function ProfilePostPage() {
 
           {comments.map((value) => {
             return (
-              <div className="flex px-4 py-3 border-b border-gray-200">
+              <div
+                key={value.commentid}
+                className="flex px-4 py-3 border-b border-gray-200"
+              >
                 <div>
                   <Image
                     src={`${BackendURL}/images/ufc.jpg`}
