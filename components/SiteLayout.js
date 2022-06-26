@@ -50,7 +50,7 @@ export default function SiteLayout({ children }) {
           <SideBarCreate />
         </div>
 
-        <div className="sm:ml-[75px] xl:ml-[275px] w-screen sm:flex-1 border-x border-gray-200 min-h-screen">
+        <div className="sm:ml-[75px] xl:ml-[275px] w-full sm:flex-1 border-x border-gray-200 min-h-screen">
           {children}
         </div>
 
@@ -70,7 +70,9 @@ export default function SiteLayout({ children }) {
             <p>Copyright info</p>
           </div>
         </div>
-        <div className="sm:hidden w-full fixed bottom-0 bg-yellow-200">Yo</div>
+        <div className="sm:hidden w-full fixed left-0 bottom-0 right-0 bg-yellow-200">
+          Yo
+        </div>
       </div>
     </div>
   );
