@@ -88,7 +88,7 @@ export default function Home() {
                   </div>
                 </Link>
 
-                {value.location !== null && (
+                {value.location && (
                   <div className="ml-1 text-gray-500">
                     • {value.location.substring(0, 20) + "..."}
                   </div>
@@ -99,7 +99,7 @@ export default function Home() {
                 <FaBalanceScale size={20} />
                 <div className="ml-1 mr-4">{value.weight} lbs</div>
 
-                {value.length !== null && (
+                {value.length && (
                   <>
                     <FaRulerHorizontal size={20} />
                     <div className="ml-1 mr-4">{`${value.length}"`}</div>
@@ -110,11 +110,9 @@ export default function Home() {
                 <div className="ml-1">{value.species}</div>
               </div>
 
-              {value.caption !== null && (
-                <div className="my-1">{value.caption}</div>
-              )}
+              {value.caption && <div className="my-1">{value.caption}</div>}
 
-              {value.picture != null && (
+              {value.picture && (
                 <div className="my-2">
                   <Image
                     className="rounded-xl"

@@ -113,7 +113,7 @@ export default function ProfilePostPage() {
             <div className="flex text-gray-500 items-center text-xl mt-2">
               <FaBalanceScale size={22} />
               <div className="ml-1 mr-4">{post.weight} lbs</div>
-              {post.length !== null && (
+              {post.length && (
                 <>
                   <FaRulerHorizontal size={22} />
                   <div className="ml-1 mr-4">{`${post.length}"`}</div>
@@ -125,7 +125,7 @@ export default function ProfilePostPage() {
             </div>
             <div className="text-2xl mt-2 mb-3">{post.caption}</div>
 
-            {post.picture != null && (
+            {post.picture && (
               <div className="mt-2">
                 <Image
                   className="rounded-xl"
