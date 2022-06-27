@@ -103,7 +103,9 @@ export default function ProfilePostPage() {
               />
               <div className="ml-3">
                 <div className="font-bold">{post.username}</div>
-                <div className="text-gray-500">{post.location}</div>
+                <div className="text-gray-500">
+                  {post.location.substring(0, 20) + "..."}
+                </div>
               </div>
             </div>
             <div className="flex text-gray-500 items-center text-xl mt-2">
@@ -184,7 +186,7 @@ export default function ProfilePostPage() {
               </div>
             </div>
             <div
-              className="bg-blue-300 py-1.5 px-3 rounded-full cursor-pointer"
+              className="bg-tblue py-1.5 px-3 rounded-full cursor-pointer shadow-lg text-white"
               onClick={() => createComment()}
             >
               Tweet
