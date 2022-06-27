@@ -103,9 +103,11 @@ export default function ProfilePostPage() {
               />
               <div className="ml-3">
                 <div className="font-bold">{post.username}</div>
-                <div className="text-gray-500">
-                  {post.location.substring(0, 20) + "..."}
-                </div>
+                {post.location && (
+                  <div className="text-gray-500">
+                    {post.location.substring(0, 20) + "..."}
+                  </div>
+                )}
               </div>
             </div>
             <div className="flex text-gray-500 items-center text-xl mt-2">
