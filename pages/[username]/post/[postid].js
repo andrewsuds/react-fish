@@ -173,6 +173,7 @@ export default function ProfilePostPage() {
               />
               <div className="text-xl ml-3">
                 <input
+                  className="w-[150px]"
                   type="text"
                   onChange={(e) => {
                     setComment(e.target.value);

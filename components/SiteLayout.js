@@ -1,14 +1,25 @@
 import SideBar from "./SideBar";
-import SideBarIcon from "./SideBarIcon";
-import SideBarCreate from "./SideBarCreate";
+import Link from "next/link";
 import { UserContext } from "../lib/UserContext";
 import { useEffect, useContext } from "react";
 import { BackendURL } from "../lib/BackendURL";
 import Axios from "axios";
+import {
+  RiHomeFill,
+  RiHomeLine,
+  RiSearchFill,
+  RiSearchLine,
+} from "react-icons/ri";
+import { FaMap, FaRegMap } from "react-icons/fa";
+import { MdLeaderboard, MdOutlineLeaderboard } from "react-icons/md";
+import { GiFishingPole } from "react-icons/gi";
+import { IoArrowBack } from "react-icons/io5";
+import { useRouter } from "next/router";
 
 export default function SiteLayout({ children }) {
   const { user, setUser } = useContext(UserContext);
   Axios.defaults.withCredentials = true;
+  const Router = useRouter();
 
   useEffect(() => {
     Axios.get(`${BackendURL}/auth/login`).then((response) => {
@@ -18,61 +29,64 @@ export default function SiteLayout({ children }) {
   });
 
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="flex">
-        <div className="flex-col fixed top-0 bottom-0 hidden overflow-y-auto sm:block sm:w-[75px] xl:w-[275px] px-3">
-          <SideBarIcon />
-          <SideBar name="Home" url="/" icon="home" selectedIcon="homeoutline" />
-          <SideBar
-            name="Search"
-            url="/search"
-            icon="home"
-            selectedIcon="homeoutline"
-          />
-          <SideBar
-            name="Leaderboard"
-            url="/leaderboard"
-            icon="home"
-            selectedIcon="homeoutline"
-          />
-          <SideBar
-            name="Map"
-            url="/map"
-            icon="home"
-            selectedIcon="homeoutline"
-          />
-          <SideBar
-            name="Activity"
-            url="/activity"
-            icon="home"
-            selectedIcon="homeoutline"
-          />
-          <SideBarCreate />
-        </div>
+    <div className="max-w-sm mx-auto">
+      <div className="border-x border-gray-200 min-h-screen">{children}</div>
 
-        <div className="sm:ml-[75px] xl:ml-[275px] w-full sm:flex-1 border-x border-gray-200 min-h-screen">
-          {children}
+      {Router.pathname == "/create" ? (
+        <div
+          className="fixed bottom-[66px] right-[16px] p-3 rounded-full bg-tblue text-white shadow-lg"
+          onClick={() => Router.back()}
+        >
+          <IoArrowBack size={26} />
         </div>
+      ) : (
+        <Link href="/create">
+          <div className="fixed bottom-[66px] right-[16px] p-3 rounded-full bg-tblue text-white shadow-lg">
+            <GiFishingPole size={26} />
+          </div>
+        </Link>
+      )}
 
-        <div className="hidden lg:block lg:w-[250px]">
-          <div className="">
-            <p>Hi</p>
-            <p>Hi</p>
-            <p>Hi</p>
-            <p>Hi</p>
-            <p>Hi</p>
-            <p>Hi</p>
-            <p>Last one</p>
+      <div className="flex fixed left-0 right-0 bottom-0 border-t border-gray-200 bg-white justify-around py-1">
+        <Link href="/">
+          <div className="p-[7.5px] hover:bg-gray-200 rounded-full">
+            {Router.pathname == "/" ? (
+              <RiHomeFill size={26} />
+            ) : (
+              <RiHomeLine size={26} />
+            )}
           </div>
-          <br />
-          <br />
-          <div className="top-0 sticky">
-            <p>Copyright info</p>
+        </Link>
+
+        <Link href="/search">
+          <div className="p-[7.5px] hover:bg-gray-200 rounded-full">
+            {Router.pathname == "/search" ? (
+              <RiSearchFill size={26} />
+            ) : (
+              <RiSearchLine size={26} />
+            )}
           </div>
-        </div>
-        <div className="sm:hidden w-full fixed left-0 bottom-0 right-0 bg-yellow-200">
-          Yo
-        </div>
+        </Link>
+
+        <Link href="/leaderboard">
+          <div className="p-[7.5px] hover:bg-gray-200 rounded-full">
+            {Router.pathname == "/leaderboard" ? (
+              <MdLeaderboard size={26} />
+            ) : (
+              <MdOutlineLeaderboard size={26} />
+            )}
+          </div>
+        </Link>
+
+        <Link href="/map">
+          <div className="p-[7.5px] hover:bg-gray-200 rounded-full">
+            {Router.pathname == "/map" ? (
+              <FaMap size={26} />
+            ) : (
+              <FaRegMap size={26} />
+            )}
+          </div>
+        </Link>
       </div>
     </div>
   );

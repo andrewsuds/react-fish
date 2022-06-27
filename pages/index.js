@@ -62,7 +62,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className="mb-[50px]">
       <NavBar title="Home" />
       {postFeed.map((value) => {
         return (
@@ -89,7 +89,9 @@ export default function Home() {
                 </Link>
 
                 {value.location !== null && (
-                  <div className="ml-1 text-gray-500">• {value.location}</div>
+                  <div className="ml-1 text-gray-500">
+                    • {value.location.substring(0, 20) + "..."}
+                  </div>
                 )}
               </div>
 
