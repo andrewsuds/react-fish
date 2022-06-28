@@ -194,8 +194,8 @@ export default function ProfilePostPage() {
               Tweet
             </div>
           </div>
-          <div className="mb-[49px]">
-            {!comments.length && <div className="h-[81px] mb-[49px]"></div>}
+
+          <div>
             {comments.map((value) => {
               return (
                 <div
@@ -221,6 +221,7 @@ export default function ProfilePostPage() {
                 </div>
               );
             })}
+            <div className="h-[81px] mb-[49px]"></div>
           </div>
         </>
       )}
