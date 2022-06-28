@@ -30,7 +30,9 @@ export default function SiteLayout({ children }) {
 
   return (
     <div className="max-w-sm mx-auto">
-      <div className="border-x border-gray-200 min-h-screen">{children}</div>
+      <div className="sm:border-x sm:border-gray-200 min-h-screen">
+        {children}
+      </div>
 
       {Router.pathname == "/create" ? (
         <div
