@@ -195,6 +195,9 @@ export default function ProfilePostPage() {
             </div>
           </div>
           <div className="mb-[49px]">
+            {!comments.length && (
+              <div className="h-[81px] mb-[50px] border border-red-500">h</div>
+            )}
             {comments.map((value) => {
               return (
                 <div
