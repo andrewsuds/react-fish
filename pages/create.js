@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { BackendURL } from "../lib/BackendURL";
 
@@ -12,6 +12,15 @@ export default function CreatePage() {
   const [speciesID, setSpeciesID] = useState("");
   const [message, setMessage] = useState("");
   const Router = useRouter();
+  const [speciesList, setSpeciesList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    Axios.get(`${BackendURL}/post/species`).then((response) => {
+      setSpeciesList(response.data);
+      setLoading(false);
+    });
+  }, []);
 
   const submit = () => {
     const formData = new FormData();
@@ -34,62 +43,73 @@ export default function CreatePage() {
 
   return (
     <div>
-      <div>
-        <input
-          type="text"
-          onChange={(e) => {
-            setWeight(e.target.value);
-          }}
-          value={weight}
-          placeholder="Weight"
-        />
-      </div>
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div>
+          <div>
+            <input
+              type="text"
+              onChange={(e) => {
+                setWeight(e.target.value);
+              }}
+              value={weight}
+              placeholder="Weight"
+            />
+          </div>
 
-      <div>
-        <input
-          type="text"
-          onChange={(e) => {
-            setLength(e.target.value);
-          }}
-          value={length}
-          placeholder="Length"
-        />
-      </div>
+          <div>
+            <input
+              type="text"
+              onChange={(e) => {
+                setLength(e.target.value);
+              }}
+              value={length}
+              placeholder="Length"
+            />
+          </div>
 
-      <div>
-        <input
-          type="text"
-          onChange={(e) => {
-            setCaption(e.target.value);
-          }}
-          value={caption}
-          placeholder="Caption"
-        />
-      </div>
+          <div>
+            <input
+              type="text"
+              onChange={(e) => {
+                setCaption(e.target.value);
+              }}
+              value={caption}
+              placeholder="Caption"
+            />
+          </div>
 
-      <div>
-        <input
-          type="text"
-          onChange={(e) => {
-            setSpeciesID(e.target.value);
-          }}
-          value={speciesID}
-          placeholder="Species ID"
-        />
-      </div>
+          <div>
+            <select
+              defaultValue={""}
+              onChange={(e) => {
+                setSpeciesID(e.target.value);
+              }}
+            >
+              <option value={""} hidden>
+                Select a Fish
+              </option>
+              {speciesList.map((value) => {
+                return <option value={value.speciesid}>{value.species}</option>;
+              })}
+            </select>
+          </div>
 
-      <div>
-        <input
-          type="file"
-          onChange={(e) => {
-            setPicture(e.target.files[0]);
-          }}
-        />
-      </div>
+          <div>
+            <input
+              type="file"
+              onChange={(e) => {
+                setPicture(e.target.files[0]);
+              }}
+            />
+          </div>
 
-      <div>{message}</div>
+          <div>{message}</div>
 
-      <button onClick={submit}>Submit</button>
+          <button onClick={submit}>Submit</button>
+        </div>
+      )}
     </div>
   );
 }
