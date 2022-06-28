@@ -194,32 +194,33 @@ export default function ProfilePostPage() {
               Tweet
             </div>
           </div>
-
-          {comments.map((value) => {
-            return (
-              <div
-                key={value.commentid}
-                className="flex px-4 py-3 border-b border-gray-200"
-              >
-                <div>
-                  <Image
-                    src={`${BackendURL}/images/ufc.jpg`}
-                    className="rounded-full"
-                    width={50}
-                    height={50}
-                    layout="fixed"
-                  />
-                </div>
-                <div className="ml-3">
-                  <div className="flex">
-                    <div className="font-bold">{value.username}</div>
-                    <div className="ml-1 text-gray-500">• 20m</div>
+          <div className="mb-[49px]">
+            {comments.map((value) => {
+              return (
+                <div
+                  key={value.commentid}
+                  className="flex px-4 py-3 border-b border-gray-200"
+                >
+                  <div>
+                    <Image
+                      src={`${BackendURL}/images/ufc.jpg`}
+                      className="rounded-full"
+                      width={50}
+                      height={50}
+                      layout="fixed"
+                    />
                   </div>
-                  <div>{value.comment}</div>
+                  <div className="ml-3">
+                    <div className="flex">
+                      <div className="font-bold">{value.username}</div>
+                      <div className="ml-1 text-gray-500">• 20m</div>
+                    </div>
+                    <div>{value.comment}</div>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </>
       )}
     </div>
