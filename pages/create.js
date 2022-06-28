@@ -91,7 +91,11 @@ export default function CreatePage() {
                 Select a Fish
               </option>
               {speciesList.map((value) => {
-                return <option value={value.speciesid}>{value.species}</option>;
+                return (
+                  <option key={value.speciesid} value={value.speciesid}>
+                    {value.species}
+                  </option>
+                );
               })}
             </select>
           </div>
