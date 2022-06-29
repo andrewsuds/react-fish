@@ -60,7 +60,7 @@ export default function CreatePage() {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div className="relative">
+        <div>
           <NavBar title="Create Post" />
           <div className="px-4 pt-3 pb-[50px] space-y-4">
             <div className="flex items-center space-x-3">
@@ -165,7 +165,7 @@ export default function CreatePage() {
           </div>
 
           <div
-            className="absolute top-[10px] right-[16px] z-10 bg-tblue py-1.5 px-3 rounded-full cursor-pointer shadow-md text-white"
+            className="fixed top-[10px] right-[16px] z-10 bg-tblue py-1.5 px-3 rounded-full cursor-pointer shadow-md text-white"
             onClick={!submitted ? submit : undefined}
           >
             {!submitted ? (
