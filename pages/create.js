@@ -153,6 +153,7 @@ export default function CreatePage() {
                 <input
                   id="dropzone"
                   type="file"
+                  accept="image/*"
                   onChange={(e) => {
                     setPicture(e.target.files[0]);
                   }}
