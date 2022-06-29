@@ -137,7 +137,7 @@ export default function CreatePage() {
                 <FaCamera size={20} />
               </div>
               <label
-                for="dropzone"
+                htmlFor="dropzone"
                 className="cursor-pointer w-full rounded-md border-2 border-dashed border-gray-200"
               >
                 <div className="flex flex-col justify-center items-center pt-5 pb-6 text-gray-500">
