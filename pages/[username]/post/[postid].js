@@ -188,7 +188,7 @@ export default function ProfilePostPage() {
               </div>
             </div>
             <div
-              className="bg-tblue py-1.5 px-3 rounded-full cursor-pointer shadow-lg text-white"
+              className="bg-tblue py-1.5 px-3 rounded-full cursor-pointer shadow-md text-white"
               onClick={() => createComment()}
             >
               Tweet

@@ -36,14 +36,14 @@ export default function SiteLayout({ children }) {
 
       {Router.pathname == "/create" ? (
         <div
-          className="fixed bottom-[66px] right-[16px] p-3 rounded-full bg-tblue text-white shadow-lg"
+          className="fixed bottom-[66px] right-[16px] p-3 rounded-full bg-tblue text-white shadow-md cursor-pointer"
           onClick={() => Router.back()}
         >
           <IoArrowBack size={26} />
         </div>
       ) : (
         <Link href="/create">
-          <div className="fixed bottom-[66px] right-[16px] p-3 rounded-full bg-tblue text-white shadow-lg">
+          <div className="fixed bottom-[66px] right-[16px] p-3 rounded-full bg-tblue text-white shadow-md cursor-pointer">
             <GiFishingPole size={26} />
           </div>
         </Link>
