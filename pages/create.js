@@ -62,7 +62,7 @@ export default function CreatePage() {
       ) : (
         <div>
           <NavBar title="Create Post" />
-          <div className="px-4 pt-3 pb-[50px] space-y-4">
+          <div className="px-4 py-3 space-y-4">
             <div className="flex items-center space-x-3">
               <div className="text-gray-500">
                 <FaBalanceScale size={22} />
