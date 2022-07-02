@@ -87,7 +87,7 @@ export default function ProfilePostPage() {
 
   return (
     <div>
-      <NavBar back={true} title="Post" />
+      <NavBar back={true} activity={true} title="Post" />
       {loading ? (
         <div>Loading...</div>
       ) : (

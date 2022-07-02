@@ -12,7 +12,7 @@ export default function ProfilePage() {
 
   return (
     <div>
-      <NavBar back={true} title="Profile" />
+      <NavBar back={true} activity={true} title="Profile" />
     </div>
   );
 }
