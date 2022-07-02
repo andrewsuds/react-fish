@@ -63,7 +63,7 @@ export default function Home() {
 
   return (
     <div className="mb-[50px]">
-      <NavBar title="Home" />
+      <NavBar title="Home" activity={true} />
       {postFeed.map((value) => {
         return (
           <div
