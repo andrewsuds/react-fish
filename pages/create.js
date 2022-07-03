@@ -60,7 +60,7 @@ export default function CreatePage() {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div>
+        <div className="mb-[50px]">
           <NavBar title="Create Post" />
           <div className="px-4 py-3 space-y-4">
             <div className="flex items-center space-x-3">
