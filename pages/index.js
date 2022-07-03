@@ -90,24 +90,28 @@ export default function Home() {
 
                 {value.location && (
                   <div className="ml-1 text-gray-500">
-                    • {value.location.substring(0, 20) + "..."}
+                    • {value.location.substring(0, 10) + "..."}
                   </div>
                 )}
               </div>
 
-              <div className="flex text-gray-500 items-center">
-                <FaBalanceScale size={20} />
-                <div className="ml-1 mr-4">{value.weight} lbs</div>
+              <div className="flex flex-wrap text-gray-500 items-center">
+                <div className="flex items-center">
+                  <FaBalanceScale size={20} />
+                  <div className="ml-2 mr-4">{value.weight} lbs</div>
+                </div>
 
                 {value.length && (
-                  <>
+                  <div className="flex items-center">
                     <FaRulerHorizontal size={20} />
-                    <div className="ml-1 mr-4">{`${value.length}"`}</div>
-                  </>
+                    <div className="ml-2 mr-4">{`${value.length}"`}</div>
+                  </div>
                 )}
 
-                <FaFish size={20} />
-                <div className="ml-1">{value.species}</div>
+                <div className="flex items-center">
+                  <FaFish size={20} />
+                  <div className="ml-2">{value.species}</div>
+                </div>
               </div>
 
               {value.caption && <div className="my-1">{value.caption}</div>}
