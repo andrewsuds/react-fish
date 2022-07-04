@@ -28,7 +28,7 @@ export default function ProfilePostPage() {
       setLoading(false);
     });
 
-    Axios.get(`${BackendURL}/post/comments/${postid}`).then((response) => {
+    Axios.get(`${BackendURL}/comment/all/${postid}`).then((response) => {
       setComments(response.data);
     });
   }, [Router.isReady]);
@@ -63,14 +63,14 @@ export default function ProfilePostPage() {
   };
 
   const createComment = () => {
-    Axios.post(`${BackendURL}/post/comment`, {
+    Axios.post(`${BackendURL}/comment/create`, {
       postid: postid,
       comment: comment,
     }).then((response) => {
       console.log(response.data);
       if (response.data.commented === true) {
         setComment("");
-        Axios.get(`${BackendURL}/post/comments/${postid}`).then((response) => {
+        Axios.get(`${BackendURL}/comment/all/${postid}`).then((response) => {
           setComments(response.data);
         });
 
@@ -95,7 +95,7 @@ export default function ProfilePostPage() {
           <div className="px-4 pt-3">
             <div className="flex items-center">
               <Image
-                src={`${BackendURL}/images/ufc.jpg`}
+                src={`${BackendURL}/avatars/${post.avatar}`}
                 className="rounded-full"
                 width={50}
                 height={50}
@@ -105,23 +105,26 @@ export default function ProfilePostPage() {
                 <div className="font-bold">{post.username}</div>
                 {post.location && (
                   <div className="text-gray-500">
-                    {post.location.substring(0, 20) + "..."}
+                    {post.location.substring(0, 10) + "..."}
                   </div>
                 )}
               </div>
             </div>
-            <div className="flex text-gray-500 items-center text-xl mt-2">
-              <FaBalanceScale size={22} />
-              <div className="ml-1 mr-4">{post.weight} lbs</div>
+            <div className="flex flex-wrap text-gray-500 items-center text-xl mt-2">
+              <div className="flex items-center">
+                <FaBalanceScale size={22} />
+                <div className="ml-2 mr-4">{post.weight} lbs</div>
+              </div>
               {post.length && (
-                <>
+                <div className="flex items-center">
                   <FaRulerHorizontal size={22} />
-                  <div className="ml-1 mr-4">{`${post.length}"`}</div>
-                </>
+                  <div className="ml-2 mr-4">{`${post.length}"`}</div>
+                </div>
               )}
-
-              <FaFish size={22} />
-              <div className="ml-1">{post.species}</div>
+              <div className="flex items-center">
+                <FaFish size={22} />
+                <div className="ml-2">{post.species}</div>
+              </div>
             </div>
             <div className="text-2xl mt-2 mb-3">{post.caption}</div>
 
