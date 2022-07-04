@@ -72,7 +72,7 @@ export default function Home() {
           >
             <div className="mr-3">
               <Image
-                src={`${BackendURL}/images/ufc.jpg`}
+                src={`${BackendURL}/avatars/${value.avatar}`}
                 className="rounded-full"
                 width={50}
                 height={50}
@@ -83,15 +83,31 @@ export default function Home() {
             <div className="">
               <div className="flex">
                 <Link href={`/${value.username}`}>
-                  <div className="font-bold hover:underline hover:cursor-pointer">
+                  <div className="font-bold hover:underline hover:cursor-pointer mr-1">
                     {value.username}
                   </div>
                 </Link>
 
                 {value.location && (
-                  <div className="ml-1 text-gray-500">
-                    • {value.location.substring(0, 10) + "..."}
-                  </div>
+                  <div className="text-gray-500 mr-1">{"New Holland, PA"}</div>
+                )}
+
+                {value.postdate.days ? (
+                  <span className="text-gray-500">
+                    • {value.postdate.days}d
+                  </span>
+                ) : value.postdate.hours ? (
+                  <span className="text-gray-500">
+                    • {value.postdate.hours}h
+                  </span>
+                ) : value.postdate.minutes ? (
+                  <span className="text-gray-500">
+                    • {value.postdate.minutes}m
+                  </span>
+                ) : (
+                  <span className="text-gray-500">
+                    • {value.postdate.seconds}s
+                  </span>
                 )}
               </div>
 
