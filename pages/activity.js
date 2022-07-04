@@ -24,7 +24,7 @@ export default function ActivityPage() {
           >
             <div className="w-[35px] h-[35px] mr-3">
               <Image
-                src={`${BackendURL}/images/ufc.jpg`}
+                src={`${BackendURL}/avatars/${value.avatar}`}
                 className="rounded-full"
                 width={35}
                 height={35}
@@ -47,7 +47,7 @@ export default function ActivityPage() {
                 </span>
               </Link>
 
-              <span>. </span>
+              <span>{". "}</span>
               {value.activitydate.days ? (
                 <span className="text-gray-500">
                   {value.activitydate.days}d
