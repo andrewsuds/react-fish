@@ -81,7 +81,7 @@ export default function Home() {
             </div>
 
             <div className="">
-              <div className="flex">
+              <div className="flex flex-wrap">
                 <Link href={`/${value.username}`}>
                   <div className="font-bold hover:underline hover:cursor-pointer mr-1">
                     {value.username}
@@ -89,26 +89,27 @@ export default function Home() {
                 </Link>
 
                 {value.location && (
-                  <div className="text-gray-500 mr-1">{"New Holland, PA"}</div>
+                  <div className="text-gray-500 mr-1">{value.location}</div>
                 )}
-
-                {value.postdate.days ? (
-                  <span className="text-gray-500">
-                    • {value.postdate.days}d
-                  </span>
-                ) : value.postdate.hours ? (
-                  <span className="text-gray-500">
-                    • {value.postdate.hours}h
-                  </span>
-                ) : value.postdate.minutes ? (
-                  <span className="text-gray-500">
-                    • {value.postdate.minutes}m
-                  </span>
-                ) : (
-                  <span className="text-gray-500">
-                    • {value.postdate.seconds}s
-                  </span>
-                )}
+                <div>
+                  {value.postdate.days ? (
+                    <span className="text-gray-500">
+                      • {value.postdate.days}d
+                    </span>
+                  ) : value.postdate.hours ? (
+                    <span className="text-gray-500">
+                      • {value.postdate.hours}h
+                    </span>
+                  ) : value.postdate.minutes ? (
+                    <span className="text-gray-500">
+                      • {value.postdate.minutes}m
+                    </span>
+                  ) : (
+                    <span className="text-gray-500">
+                      • {value.postdate.seconds}s
+                    </span>
+                  )}
+                </div>
               </div>
 
               <div className="flex flex-wrap text-gray-500 items-center">
