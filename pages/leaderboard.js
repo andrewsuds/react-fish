@@ -34,14 +34,14 @@ export default function LeaderboardPage() {
           <div className="flex items-center">
             <div className="w-[35px] h-[35px]">
               <Image
-                src={`${BackendURL}/images/ufc.jpg`}
+                src={`${BackendURL}/avatars/ufc.jpg`}
                 className="rounded-full"
                 width={35}
                 height={35}
               />
             </div>
 
-            <div className="font-bold text-xl ml-[26px]">Leaderboard</div>
+            <div className="font-bold text-lg ml-[26px]">Leaderboard</div>
           </div>
 
           <div className="p-[7.5px] rounded-full hover:bg-gray-500 hover:bg-opacity-20 cursor-pointer">
@@ -148,7 +148,7 @@ export default function LeaderboardPage() {
                 <div>{`#${index + 1}`}</div>
                 <div className="flex ml-4 mr-4">
                   <Image
-                    src={`${BackendURL}/images/ufc.jpg`}
+                    src={`${BackendURL}/avatars/${value.avatar}`}
                     className="rounded-full"
                     width={35}
                     height={35}

@@ -1,4 +1,3 @@
-import SideBar from "./SideBar";
 import Link from "next/link";
 import { UserContext } from "../lib/UserContext";
 import { useEffect, useContext } from "react";

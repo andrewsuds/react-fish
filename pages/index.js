@@ -80,8 +80,8 @@ export default function Home() {
               />
             </div>
 
-            <div className="">
-              <div className="flex flex-wrap">
+            <div>
+              <div className="flex flex-wrap items-baseline">
                 <Link href={`/${value.username}`}>
                   <div className="font-bold hover:underline hover:cursor-pointer mr-1">
                     {value.username}
@@ -89,25 +89,19 @@ export default function Home() {
                 </Link>
 
                 {value.location && (
-                  <div className="text-gray-500 mr-1">{value.location}</div>
+                  <div className="text-gray-500 text-sm mr-1">
+                    {value.location}
+                  </div>
                 )}
-                <div>
+                <div className="text-sm text-gray-500 leading-6">
                   {value.postdate.days ? (
-                    <span className="text-gray-500">
-                      • {value.postdate.days}d
-                    </span>
+                    <span>• {value.postdate.days}d</span>
                   ) : value.postdate.hours ? (
-                    <span className="text-gray-500">
-                      • {value.postdate.hours}h
-                    </span>
+                    <span>• {value.postdate.hours}h</span>
                   ) : value.postdate.minutes ? (
-                    <span className="text-gray-500">
-                      • {value.postdate.minutes}m
-                    </span>
+                    <span>• {value.postdate.minutes}m</span>
                   ) : (
-                    <span className="text-gray-500">
-                      • {value.postdate.seconds}s
-                    </span>
+                    <span>• {value.postdate.seconds}s</span>
                   )}
                 </div>
               </div>
@@ -131,10 +125,12 @@ export default function Home() {
                 </div>
               </div>
 
-              {value.caption && <div className="my-1">{value.caption}</div>}
+              {value.caption && (
+                <div className="mt-1 mb-2">{value.caption}</div>
+              )}
 
               {value.picture && (
-                <div className="my-2">
+                <div className="flex mb-2">
                   <Image
                     className="rounded-xl"
                     src={`${BackendURL}/images/${value.picture}`}

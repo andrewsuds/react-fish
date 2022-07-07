@@ -27,7 +27,7 @@ export default function NavBar(props) {
             />
           </div>
         )}
-        <div className="font-bold text-xl ml-[26px]">{props.title}</div>
+        <div className="font-bold text-lg ml-[26px]">{props.title}</div>
       </div>
 
       {props.activity == true && (

@@ -12,6 +12,7 @@ import {
   FaRegHeart,
 } from "react-icons/fa";
 import { MdOutlineBubbleChart } from "react-icons/md";
+import { IoArrowDown } from "react-icons/io5";
 
 export default function ProfilePostPage() {
   const Router = useRouter();
@@ -40,6 +41,22 @@ export default function ProfilePostPage() {
     }).then((response) => {
       console.log(response.data);
     });
+  };
+
+  const formatDate = (dateString) => {
+    const dateOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    const timeOptions = {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    };
+    const time = new Date(dateString).toLocaleTimeString("en-US", timeOptions);
+    const date = new Date(dateString).toLocaleDateString("en-US", dateOptions);
+    return `${time} • ${date}`;
   };
 
   const toggleLike = (id) => {
@@ -93,7 +110,7 @@ export default function ProfilePostPage() {
       ) : (
         <>
           <div className="px-4 pt-3">
-            <div className="flex items-center">
+            <div className="flex items-center mb-2">
               <Image
                 src={`${BackendURL}/avatars/${post.avatar}`}
                 className="rounded-full"
@@ -104,13 +121,11 @@ export default function ProfilePostPage() {
               <div className="ml-3">
                 <div className="font-bold">{post.username}</div>
                 {post.location && (
-                  <div className="text-gray-500">
-                    {post.location.substring(0, 10) + "..."}
-                  </div>
+                  <div className="text-gray-500">{post.location}</div>
                 )}
               </div>
             </div>
-            <div className="flex flex-wrap text-gray-500 items-center text-xl mt-2">
+            <div className="flex flex-wrap text-gray-500 items-center text-lg">
               <div className="flex items-center">
                 <FaBalanceScale size={22} />
                 <div className="ml-2 mr-4">{post.weight} lbs</div>
@@ -126,10 +141,10 @@ export default function ProfilePostPage() {
                 <div className="ml-2">{post.species}</div>
               </div>
             </div>
-            <div className="text-2xl mt-2 mb-3">{post.caption}</div>
+            <div className="text-xl my-2">{post.caption}</div>
 
             {post.picture && (
-              <div className="mt-2">
+              <div className="mb-2">
                 <Image
                   className="rounded-xl"
                   src={`${BackendURL}/images/${post.picture}`}
@@ -140,7 +155,7 @@ export default function ProfilePostPage() {
               </div>
             )}
 
-            <div className="text-gray-500">{post.postdate}</div>
+            <div className="text-gray-500">{formatDate(post.postdate)}</div>
 
             <div className="flex mt-2 justify-around text-gray-500 border-y border-gray-200">
               <div
@@ -172,29 +187,29 @@ export default function ProfilePostPage() {
           <div className="flex border-b px-4 py-3 border-gray-200 items-center justify-between">
             <div className="flex items-center">
               <Image
-                src={`${BackendURL}/images/ufc.jpg`}
+                src={`${BackendURL}/avatars/ufc.jpg`}
                 className="rounded-full"
                 width={50}
                 height={50}
                 layout="fixed"
               />
-              <div className="text-xl ml-3">
+              <div className="text-lg ml-3">
                 <input
-                  className="w-[150px]"
+                  className="rounded-md border-gray-200 focus:border-gray-200 focus:ring-2 focus:ring-tblue focus:shadow-md"
                   type="text"
                   onChange={(e) => {
                     setComment(e.target.value);
                   }}
                   value={comment}
-                  placeholder="Tweet your reply"
+                  placeholder="Comment your reply"
                 />
               </div>
             </div>
             <div
-              className="bg-tblue py-1.5 px-3 rounded-full cursor-pointer shadow-md text-white"
+              className="bg-tblue p-2 rounded-full cursor-pointer shadow-md text-white"
               onClick={() => createComment()}
             >
-              Tweet
+              <IoArrowDown size={20} />
             </div>
           </div>
 
@@ -205,9 +220,9 @@ export default function ProfilePostPage() {
                   key={value.commentid}
                   className="flex px-4 py-3 border-b border-gray-200"
                 >
-                  <div>
+                  <div className="w-[50px] h-[50px]">
                     <Image
-                      src={`${BackendURL}/images/ufc.jpg`}
+                      src={`${BackendURL}/avatars/ufc.jpg`}
                       className="rounded-full"
                       width={50}
                       height={50}
