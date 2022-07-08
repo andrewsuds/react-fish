@@ -39,6 +39,8 @@ export default function LeaderboardPage() {
                 className="rounded-full"
                 width={35}
                 height={35}
+                layout="fixed"
+                objectFit="cover"
               />
             </div>
 
@@ -153,6 +155,8 @@ export default function LeaderboardPage() {
                     className="rounded-full"
                     width={35}
                     height={35}
+                    layout="fixed"
+                    objectFit="cover"
                   />
                 </div>
                 <div>{value.username}</div>
