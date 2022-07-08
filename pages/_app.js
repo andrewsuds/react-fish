@@ -4,7 +4,7 @@ import { UserContext } from "../lib/UserContext";
 import { useState, useMemo } from "react";
 
 function App({ Component, pageProps }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("");
   const providerUser = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (

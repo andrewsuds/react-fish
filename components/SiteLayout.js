@@ -22,9 +22,9 @@ export default function SiteLayout({ children }) {
 
   useEffect(() => {
     Axios.get(`${BackendURL}/auth/login`).then((response) => {
-      console.log("Logged In: " + response.data.username);
-      setUser(response.data.username);
+      setUser(response.data.avatar);
     });
+    console.log(user);
   });
 
   return (
