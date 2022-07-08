@@ -28,6 +28,7 @@ export default function NavBar(props) {
                 className="rounded-full"
                 width={35}
                 height={35}
+                layout="fixed"
                 objectFit="cover"
               />
             </div>

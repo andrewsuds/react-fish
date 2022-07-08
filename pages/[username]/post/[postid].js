@@ -118,6 +118,7 @@ export default function ProfilePostPage() {
                 className="rounded-full"
                 width={50}
                 height={50}
+                layout="fixed"
                 objectFit="cover"
               />
               <div className="ml-3">
@@ -193,6 +194,7 @@ export default function ProfilePostPage() {
                 className="rounded-full"
                 width={50}
                 height={50}
+                layout="fixed"
                 objectFit="cover"
               />
               <div className="text-lg ml-3">
@@ -228,6 +230,7 @@ export default function ProfilePostPage() {
                       className="rounded-full"
                       width={50}
                       height={50}
+                      layout="fixed"
                       objectFit="cover"
                     />
                   </div>

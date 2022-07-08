@@ -76,6 +76,7 @@ export default function Home() {
                 className="rounded-full"
                 width={50}
                 height={50}
+                layout="fixed"
                 objectFit="cover"
               />
             </div>
