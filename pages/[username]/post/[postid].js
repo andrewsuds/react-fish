@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { UserContext } from "../../../lib/UserContext";
 import Image from "next/image";
 import Axios from "axios";
 import { BackendURL } from "../../../lib/BackendURL";
@@ -16,6 +17,7 @@ import { IoArrowDown } from "react-icons/io5";
 
 export default function ProfilePostPage() {
   const Router = useRouter();
+  const { user, setUser } = useContext(UserContext);
   const [post, setPost] = useState({});
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
@@ -187,7 +189,7 @@ export default function ProfilePostPage() {
           <div className="flex border-b px-4 py-3 border-gray-200 items-center justify-between">
             <div className="flex items-center">
               <Image
-                src={`${BackendURL}/avatars/ufc.jpg`}
+                src={`${BackendURL}/avatars/${user}`}
                 className="rounded-full"
                 width={50}
                 height={50}
@@ -222,7 +224,7 @@ export default function ProfilePostPage() {
                 >
                   <div className="w-[50px] h-[50px]">
                     <Image
-                      src={`${BackendURL}/avatars/ufc.jpg`}
+                      src={`${BackendURL}/avatars/${user}`}
                       className="rounded-full"
                       width={50}
                       height={50}
