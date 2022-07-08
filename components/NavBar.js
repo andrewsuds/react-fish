@@ -21,14 +21,17 @@ export default function NavBar(props) {
             <IoArrowBack size={20} />
           </div>
         ) : (
-          <div className="w-[35px] h-[35px]">
-            <Image
-              src={`${BackendURL}/avatars/${user}`}
-              className="rounded-full"
-              width={35}
-              height={35}
-            />
-          </div>
+          <Link href="/settings">
+            <div className="w-[35px] h-[35px]">
+              <Image
+                src={`${BackendURL}/avatars/${user}`}
+                className="rounded-full"
+                width={35}
+                height={35}
+                objectFit="cover"
+              />
+            </div>
+          </Link>
         )}
         <div className="font-bold text-lg ml-[26px]">{props.title}</div>
       </div>

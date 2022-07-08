@@ -118,7 +118,7 @@ export default function ProfilePostPage() {
                 className="rounded-full"
                 width={50}
                 height={50}
-                layout="fixed"
+                objectFit="cover"
               />
               <div className="ml-3">
                 <div className="font-bold">{post.username}</div>
@@ -193,7 +193,7 @@ export default function ProfilePostPage() {
                 className="rounded-full"
                 width={50}
                 height={50}
-                layout="fixed"
+                objectFit="cover"
               />
               <div className="text-lg ml-3">
                 <input
@@ -224,11 +224,11 @@ export default function ProfilePostPage() {
                 >
                   <div className="w-[50px] h-[50px]">
                     <Image
-                      src={`${BackendURL}/avatars/${user}`}
+                      src={`${BackendURL}/avatars/${value.avatar}`}
                       className="rounded-full"
                       width={50}
                       height={50}
-                      layout="fixed"
+                      objectFit="cover"
                     />
                   </div>
                   <div className="ml-3">

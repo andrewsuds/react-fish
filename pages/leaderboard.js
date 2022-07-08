@@ -108,7 +108,7 @@ export default function LeaderboardPage() {
         </div>
       </div>
 
-      <div className="px-4 py-3">
+      <div className="px-4 py-3 mb-[50px]">
         <div className="flex mb-2">
           <div
             className={`rounded-full px-4 py-2 bg-gray-100 hover:bg-gray-200 cursor-pointer mr-3 ${
