@@ -1,16 +1,17 @@
 import { useRouter } from "next/router";
-import { IoArrowBack } from "react-icons/io5";
 import Link from "next/link";
 import { GiFishingHook } from "react-icons/gi";
 import { BackendURL } from "../lib/BackendURL";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Axios from "axios";
+import { UserContext } from "../lib/UserContext";
 
 export default function LeaderboardPage() {
   const [leaderboard, setLeaderboard] = useState([]);
   const [hours, setHours] = useState(24);
   const [tab, setTab] = useState("total-caught");
+  const { user, setUser } = useContext(UserContext);
 
   const requestLeaderboard = (ihours, itab) => {
     setHours(ihours);
@@ -34,7 +35,7 @@ export default function LeaderboardPage() {
           <div className="flex items-center">
             <div className="w-[35px] h-[35px]">
               <Image
-                src={`${BackendURL}/avatars/ufc.jpg`}
+                src={`${BackendURL}/avatars/${user}`}
                 className="rounded-full"
                 width={35}
                 height={35}
