@@ -10,7 +10,9 @@ export default function ActivityPage() {
 
   useEffect(() => {
     Axios.get(`${BackendURL}/profile/activity`).then((response) => {
-      setActivity(response.data);
+      if (response.status != 400) {
+        setActivity(response.data);
+      }
     });
   }, []);
   return (
