@@ -15,14 +15,14 @@ export default function NavBar(props) {
       <div className="flex items-center">
         {props.back === true ? (
           <div
-            className="p-[7.5px] rounded-full hover:bg-gray-500 hover:bg-opacity-20 cursor-pointer"
+            className="p-[7.5px] rounded-full hover:bg-gray-500/20 cursor-pointer"
             onClick={() => Router.back()}
           >
             <IoArrowBack size={20} />
           </div>
         ) : (
           <Link href="/settings">
-            <div className="w-[35px] h-[35px]">
+            <div className="w-[35px] h-[35px] bg-gray-500/20 rounded-full">
               <Image
                 src={`${BackendURL}/avatars/${user}`}
                 className="rounded-full"
@@ -39,7 +39,7 @@ export default function NavBar(props) {
 
       {props.activity == true && (
         <Link href="/activity">
-          <div className="p-[7.5px] rounded-full hover:bg-gray-500 hover:bg-opacity-20 cursor-pointer">
+          <div className="p-[7.5px] rounded-full hover:bg-gray-500/20 cursor-pointer">
             <GiFishingHook size={20} />
           </div>
         </Link>
