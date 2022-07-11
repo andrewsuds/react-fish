@@ -27,8 +27,9 @@ export default function LoginPage() {
         setUser(response.data.username);
         Router.push("/");
       } else {
-        setLoading(false);
+        setPassword("");
         setMessage(response.data.message);
+        setLoading(false);
       }
     });
   };
