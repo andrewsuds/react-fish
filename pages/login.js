@@ -96,8 +96,8 @@ export default function LoginPage() {
         </div>
         <Link href="/signup">
           <div className="mt-12 group cursor-pointer">
-            Don't have an account?{" "}
-            <span className="text-tblue group-hover:underline"> Sign up</span>
+            <span>{"Don't have an account? "}</span>
+            <span className="text-tblue group-hover:underline">Sign up</span>
           </div>
         </Link>
       </section>
