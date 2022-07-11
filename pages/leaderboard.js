@@ -47,14 +47,14 @@ export default function LeaderboardPage() {
             <div className="font-bold text-lg ml-[26px]">Leaderboard</div>
           </div>
 
-          <div className="p-[7.5px] rounded-full hover:bg-gray-500 hover:bg-opacity-20 cursor-pointer">
+          <div className="p-[7.5px] rounded-full hover:bg-gray-500/20 cursor-pointer">
             <GiFishingHook size={20} />
           </div>
         </div>
 
         <div className="flex items-center overflow-x-hidden cursor-pointer">
           <div
-            className={`p-4 hover:bg-gray-500 hover:bg-opacity-20 ${
+            className={`p-4 hover:bg-gray-500/20 ${
               tab == "total-caught" ? "border-b-2 border-tblue font-bold" : ""
             }`}
             onClick={() => {
@@ -65,7 +65,7 @@ export default function LeaderboardPage() {
           </div>
 
           <div
-            className={`p-4 hover:bg-gray-500 hover:bg-opacity-20 ${
+            className={`p-4 hover:bg-gray-500/20 ${
               tab == "total-weight" ? "border-b-2 border-tblue font-bold" : ""
             }`}
             onClick={() => {
@@ -76,7 +76,7 @@ export default function LeaderboardPage() {
           </div>
 
           <div
-            className={`p-4 hover:bg-gray-500 hover:bg-opacity-20 ${
+            className={`p-4 hover:bg-gray-500/20 ${
               tab == "biggest" ? "border-b-2 border-tblue font-bold" : ""
             }`}
             onClick={() => {
@@ -87,7 +87,7 @@ export default function LeaderboardPage() {
           </div>
 
           <div
-            className={`p-4 hover:bg-gray-500 hover:bg-opacity-20 ${
+            className={`p-4 hover:bg-gray-500/20 ${
               tab == "smallest" ? "border-b-2 border-tblue font-bold" : ""
             }`}
             onClick={() => {
@@ -98,7 +98,7 @@ export default function LeaderboardPage() {
           </div>
 
           <div
-            className={`p-4 hover:bg-gray-500 hover:bg-opacity-20 ${
+            className={`p-4 hover:bg-gray-500/20 ${
               tab == "longest" ? "border-b-2 border-tblue font-bold" : ""
             }`}
             onClick={() => {
