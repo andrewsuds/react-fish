@@ -144,6 +144,18 @@ export default function LeaderboardPage() {
           </div>
         </div>
 
+        {leaderboard.length == 0 && (
+          <div>
+            <Image
+              className="rounded-xl"
+              src={`${BackendURL}/images/leaderboard.jpeg`}
+              width={500}
+              height={500}
+              objectFit="cover"
+            />
+          </div>
+        )}
+
         {leaderboard.map((value, index) => {
           return (
             <div key={index} className="p-2 flex justify-between items-center">
