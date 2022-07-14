@@ -73,7 +73,7 @@ export default function Home() {
             <div className="mr-3">
               <Image
                 src={`${BackendURL}/avatars/${value.avatar}`}
-                className="rounded-full"
+                className="rounded-full bg-gray-200"
                 width={50}
                 height={50}
                 layout="fixed"
@@ -133,7 +133,7 @@ export default function Home() {
               {value.picture && (
                 <div className="flex mb-2">
                   <Image
-                    className="rounded-x bg-gray-500"
+                    className="rounded-xl bg-gray-200"
                     src={`${BackendURL}/images/${value.picture}`}
                     width={500}
                     height={500}

@@ -164,7 +164,7 @@ export default function LeaderboardPage() {
                     <div className="flex ml-4 mr-4">
                       <Image
                         src={`${BackendURL}/avatars/${value.avatar}`}
-                        className="rounded-full bg-gray-500/20"
+                        className="rounded-full bg-gray-200"
                         width={35}
                         height={35}
                         layout="fixed"

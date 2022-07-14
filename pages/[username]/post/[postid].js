@@ -117,7 +117,7 @@ export default function ProfilePostPage() {
             <div className="flex items-center mb-2">
               <Image
                 src={`${BackendURL}/avatars/${post.avatar}`}
-                className="rounded-full"
+                className="rounded-full bg-gray-200"
                 width={50}
                 height={50}
                 layout="fixed"
@@ -151,7 +151,7 @@ export default function ProfilePostPage() {
             {post.picture && (
               <div className="mb-2">
                 <Image
-                  className="rounded-xl bg-gray-500/20"
+                  className="rounded-xl bg-gray-200"
                   src={`${BackendURL}/images/${post.picture}`}
                   width={500}
                   height={500}
@@ -193,7 +193,7 @@ export default function ProfilePostPage() {
             <div className="w-[62px] h-[50px] flex-none">
               <Image
                 src={`${BackendURL}/avatars/${user}`}
-                className="rounded-full"
+                className="rounded-full bg-gray-200"
                 width={50}
                 height={50}
                 layout="fixed"
@@ -229,7 +229,7 @@ export default function ProfilePostPage() {
                   <div className="w-[50px] h-[50px]">
                     <Image
                       src={`${BackendURL}/avatars/${value.avatar}`}
-                      className="rounded-full"
+                      className="rounded-full bg-gray-200"
                       width={50}
                       height={50}
                       layout="fixed"
