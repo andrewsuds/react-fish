@@ -34,7 +34,7 @@ export default function ActivityPage() {
                 <div className="w-[35px] h-[35px] mr-3">
                   <Image
                     src={`${BackendURL}/avatars/${value.avatar}`}
-                    className="rounded-full"
+                    className="rounded-full bg-gray-500/20"
                     width={35}
                     height={35}
                     layout="fixed"
