@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 import { MdOutlineBubbleChart } from "react-icons/md";
 import { IoArrowDown } from "react-icons/io5";
+import { GiCirclingFish } from "react-icons/gi";
 
 export default function ProfilePostPage() {
   const Router = useRouter();
@@ -27,8 +28,8 @@ export default function ProfilePostPage() {
   useEffect(() => {
     if (!Router.isReady) return;
     Axios.get(`${BackendURL}/post/one/${postid}`).then((response) => {
-      setPost(response.data);
       setLoading(false);
+      setPost(response.data);
     });
 
     Axios.get(`${BackendURL}/comment/all/${postid}`).then((response) => {
@@ -108,7 +109,9 @@ export default function ProfilePostPage() {
     <div>
       <NavBar back={true} activity={true} title="Post" />
       {loading ? (
-        <div>Loading...</div>
+        <div className="flex justify-center mt-8 text-tblue">
+          <GiCirclingFish size={35} className="animate-spin" />
+        </div>
       ) : (
         <>
           <div className="px-4 pt-3">

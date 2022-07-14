@@ -28,8 +28,8 @@ export default function CreatePage() {
 
   useEffect(() => {
     Axios.get(`${BackendURL}/post/species`).then((response) => {
-      setSpeciesList(response.data);
       setLoading(false);
+      setSpeciesList(response.data);
     });
   }, []);
 
@@ -57,18 +57,20 @@ export default function CreatePage() {
 
   return (
     <div>
+      <NavBar title="Create Post" />
       {loading ? (
-        <div>Loading...</div>
+        <div className="flex justify-center mt-8 text-tblue">
+          <GiCirclingFish size={35} className="animate-spin" />
+        </div>
       ) : (
         <div className="mb-[50px]">
-          <NavBar title="Create Post" />
           <div className="px-4 py-3 space-y-4">
             <div className="flex items-center space-x-3">
               <div className="text-gray-500">
                 <FaBalanceScale size={22} />
               </div>
               <input
-                className="w-full rounded-md border-gray-200 focus:border-gray-200 focus:ring-2 focus:ring-tblue focus:shadow-md"
+                className="w-full rounded-[4px] border-gray-300 focus:border-2 focus:border-tblue focus:ring-0 focus:shadow-sm"
                 type="text"
                 onChange={(e) => {
                   setWeight(e.target.value);
@@ -83,7 +85,7 @@ export default function CreatePage() {
                 <FaRulerHorizontal size={22} />
               </div>
               <input
-                className="w-full rounded-md border-gray-200 focus:border-gray-200 focus:ring-2 focus:ring-tblue focus:shadow-md"
+                className="w-full rounded-[4px] border-gray-300 focus:border-2 focus:border-tblue focus:ring-0 focus:shadow-sm"
                 type="text"
                 onChange={(e) => {
                   setLength(e.target.value);
@@ -98,7 +100,7 @@ export default function CreatePage() {
                 <FaFish size={22} />
               </div>
               <select
-                className="w-full rounded-md border-gray-200 focus:border-gray-200 focus:ring-2 focus:ring-tblue focus:shadow-md cursor-pointer"
+                className="w-full rounded-[4px] border-gray-300 focus:border-2 focus:border-tblue focus:ring-0 focus:shadow-sm"
                 defaultValue={""}
                 onChange={(e) => {
                   setSpeciesID(e.target.value);
@@ -122,7 +124,7 @@ export default function CreatePage() {
                 <MdBubbleChart size={22} />
               </div>
               <textarea
-                className="w-full resize-none rounded-md border-gray-200 focus:border-gray-200 focus:ring-2 focus:ring-tblue focus:shadow-md"
+                className="w-full resize-none rounded-[4px] border-gray-300 focus:border-2 focus:border-tblue focus:ring-0 focus:shadow-sm"
                 rows={3}
                 onChange={(e) => {
                   setCaption(e.target.value);
@@ -138,7 +140,7 @@ export default function CreatePage() {
               </div>
               <label
                 htmlFor="dropzone"
-                className="cursor-pointer w-full rounded-md border-2 border-dashed border-gray-200"
+                className="cursor-pointer w-full rounded-[4px] border-2 border-dashed border-gray-200"
               >
                 <div className="flex flex-col justify-center items-center pt-5 pb-6 text-gray-500">
                   <IoCloudUploadOutline size={22} />

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { GiFishingHook } from "react-icons/gi";
+import { GiCirclingFish, GiFishbone, GiFishingHook } from "react-icons/gi";
 import { BackendURL } from "../lib/BackendURL";
 import Image from "next/image";
 import { useState, useEffect, useContext } from "react";
@@ -11,15 +11,17 @@ export default function LeaderboardPage() {
   const [leaderboard, setLeaderboard] = useState([]);
   const [hours, setHours] = useState(24);
   const [tab, setTab] = useState("total-caught");
-  const { user, setUser } = useContext(UserContext);
+  const [loading, setLoading] = useState(true);
+  const { user } = useContext(UserContext);
 
   const requestLeaderboard = (ihours, itab) => {
+    setLoading(true);
     setHours(ihours);
     setTab(itab);
     Axios.get(`${BackendURL}/leaderboard/${itab}/${ihours}`).then(
       (response) => {
         setLeaderboard(response.data);
-        console.log(response.data);
+        setLoading(false);
       }
     );
   };
@@ -36,7 +38,7 @@ export default function LeaderboardPage() {
             <div className="w-[35px] h-[35px]">
               <Image
                 src={`${BackendURL}/avatars/${user}`}
-                className="rounded-full"
+                className="rounded-full bg-gray-500/20"
                 width={35}
                 height={35}
                 layout="fixed"
@@ -46,10 +48,11 @@ export default function LeaderboardPage() {
 
             <div className="font-bold text-lg ml-[26px]">Leaderboard</div>
           </div>
-
-          <div className="p-[7.5px] rounded-full hover:bg-gray-500/20 cursor-pointer">
-            <GiFishingHook size={20} />
-          </div>
+          <Link href="/activity">
+            <div className="p-[7.5px] rounded-full hover:bg-gray-500/20 cursor-pointer">
+              <GiFishingHook size={20} />
+            </div>
+          </Link>
         </div>
 
         <div className="flex items-center overflow-x-hidden cursor-pointer">
@@ -144,39 +147,38 @@ export default function LeaderboardPage() {
           </div>
         </div>
 
-        {leaderboard.length == 0 && (
-          <div>
-            <Image
-              className="rounded-xl"
-              src={`${BackendURL}/images/leaderboard.jpeg`}
-              width={500}
-              height={500}
-              objectFit="cover"
-            />
+        {loading ? (
+          <div className="flex justify-center mt-8 text-tblue">
+            <GiCirclingFish size={35} className="animate-spin" />
           </div>
-        )}
-
-        {leaderboard.map((value, index) => {
-          return (
-            <div key={index} className="p-2 flex justify-between items-center">
-              <div className="flex items-center">
-                <div>{`#${index + 1}`}</div>
-                <div className="flex ml-4 mr-4">
-                  <Image
-                    src={`${BackendURL}/avatars/${value.avatar}`}
-                    className="rounded-full"
-                    width={35}
-                    height={35}
-                    layout="fixed"
-                    objectFit="cover"
-                  />
+        ) : (
+          <>
+            {leaderboard.map((value, index) => {
+              return (
+                <div
+                  key={index}
+                  className="p-2 flex justify-between items-center"
+                >
+                  <div className="flex items-center">
+                    <div>{`#${index + 1}`}</div>
+                    <div className="flex ml-4 mr-4">
+                      <Image
+                        src={`${BackendURL}/avatars/${value.avatar}`}
+                        className="rounded-full bg-gray-500/20"
+                        width={35}
+                        height={35}
+                        layout="fixed"
+                        objectFit="cover"
+                      />
+                    </div>
+                    <div>{value.username}</div>
+                  </div>
+                  <div>{value.value}</div>
                 </div>
-                <div>{value.username}</div>
-              </div>
-              <div>{value.value}</div>
-            </div>
-          );
-        })}
+              );
+            })}
+          </>
+        )}
       </div>
     </div>
   );

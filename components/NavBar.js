@@ -22,10 +22,10 @@ export default function NavBar(props) {
           </div>
         ) : (
           <Link href="/settings">
-            <div className="w-[35px] h-[35px] bg-gray-500/20 rounded-full">
+            <div className="w-[35px] h-[35px]">
               <Image
                 src={`${BackendURL}/avatars/${user}`}
-                className="rounded-full"
+                className="rounded-full bg-gray-500/20"
                 width={35}
                 height={35}
                 layout="fixed"
