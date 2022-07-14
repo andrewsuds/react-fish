@@ -28,12 +28,11 @@ export default function ProfilePostPage() {
   useEffect(() => {
     if (!Router.isReady) return;
     Axios.get(`${BackendURL}/post/one/${postid}`).then((response) => {
-      setLoading(false);
       setPost(response.data);
-    });
-
-    Axios.get(`${BackendURL}/comment/all/${postid}`).then((response) => {
-      setComments(response.data);
+      Axios.get(`${BackendURL}/comment/all/${postid}`).then((response) => {
+        setComments(response.data);
+        setLoading(false);
+      });
     });
   }, [Router.isReady]);
 
@@ -202,7 +201,7 @@ export default function ProfilePostPage() {
               />
               <div className="text-lg ml-3">
                 <input
-                  className="rounded-md border-gray-200 focus:border-gray-200 focus:ring-2 focus:ring-tblue focus:shadow-md"
+                  className="rounded-[4px] border-gray-300 focus:border-2 focus:border-tblue focus:ring-0 focus:shadow-sm"
                   type="text"
                   onChange={(e) => {
                     setComment(e.target.value);
