@@ -133,7 +133,7 @@ export default function Home() {
               {value.picture && (
                 <div className="flex mb-2">
                   <Image
-                    className="rounded-xl"
+                    className="rounded-x bg-gray-500"
                     src={`${BackendURL}/images/${value.picture}`}
                     width={500}
                     height={500}

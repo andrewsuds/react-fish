@@ -151,7 +151,7 @@ export default function ProfilePostPage() {
             {post.picture && (
               <div className="mb-2">
                 <Image
-                  className="rounded-xl"
+                  className="rounded-xl bg-gray-500/20"
                   src={`${BackendURL}/images/${post.picture}`}
                   width={500}
                   height={500}
