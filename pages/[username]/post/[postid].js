@@ -189,8 +189,8 @@ export default function ProfilePostPage() {
             </div>
           </div>
 
-          <div className="flex border-b px-4 py-3 border-gray-200 items-center justify-between">
-            <div className="flex items-center">
+          <div className="flex border-b px-4 py-3 border-gray-200 items-center">
+            <div className="w-[50px] h-[50px] flex-none">
               <Image
                 src={`${BackendURL}/avatars/${user}`}
                 className="rounded-full"
@@ -199,20 +199,20 @@ export default function ProfilePostPage() {
                 layout="fixed"
                 objectFit="cover"
               />
-              <div className="text-lg ml-3">
-                <input
-                  className="rounded-[4px] border-gray-300 focus:border-2 focus:border-tblue focus:ring-0 focus:shadow-sm"
-                  type="text"
-                  onChange={(e) => {
-                    setComment(e.target.value);
-                  }}
-                  value={comment}
-                  placeholder="Comment your reply"
-                />
-              </div>
             </div>
+
+            <input
+              className="grow rounded-[4px] text-lg ml-3 mr-3 border-gray-300 focus:border-2 focus:border-tblue focus:ring-0 focus:shadow-sm"
+              type="text"
+              onChange={(e) => {
+                setComment(e.target.value);
+              }}
+              value={comment}
+              placeholder="Add a comment..."
+            />
+
             <div
-              className="bg-tblue p-2 rounded-full cursor-pointer shadow-md text-white"
+              className="bg-tblue p-2 rounded-full cursor-pointer shadow-md text-white flex-none"
               onClick={() => createComment()}
             >
               <IoArrowDown size={20} />
