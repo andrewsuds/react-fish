@@ -49,7 +49,7 @@ export default function LoginPage() {
       </div>
 
       <section className="px-8">
-        <div className="text-2xl font-bold py-5">Sign in to Fishbucket</div>
+        <div className="text-2xl font-bold py-5">Log in to Fishbucket</div>
         <div>
           <input
             className="w-full rounded-[4px] border-gray-300 focus:border-2 focus:border-tblue focus:ring-0 focus:shadow-sm"
@@ -86,7 +86,7 @@ export default function LoginPage() {
           onClick={login}
         >
           {!loading ? (
-            "Sign in"
+            "Log in"
           ) : (
             <GiCirclingFish className="animate-spin" size={24} />
           )}
