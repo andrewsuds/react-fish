@@ -14,3 +14,7 @@
     transition-duration: 0.2s;
   }
 }
+
+.orientation {
+  image-orientation: from-image;
+}
