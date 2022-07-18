@@ -15,7 +15,11 @@
   }
 }
 
-.orientation {
-  image-orientation: from-image;
-  filter: invert(100%);
+@layer components {
+  .orientation {
+    image-orientation: from-image;
+    filter: invert(100%);
+    object-fit: cover;
+    @apply rounded-xl;
+  }
 }

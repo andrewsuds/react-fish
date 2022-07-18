@@ -132,13 +132,10 @@ export default function HomePage() {
 
               {value.picture && (
                 <div className="flex mb-2">
-                  <Image
-                    className="rounded-xl bg-gray-200 orientation"
+                  <img
                     src={`${BackendURL}/images/${value.picture}`}
-                    width={500}
-                    height={500}
-                    objectFit="cover"
-                  />
+                    className="orientation"
+                  ></img>
                 </div>
               )}
 
