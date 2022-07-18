@@ -25,7 +25,7 @@ export default function LoginPage() {
       console.log(response.data);
       if (response.data.loggedIn == true) {
         setUser(response.data.username);
-        Router.push("/");
+        Router.push("/home");
       } else {
         setPassword("");
         setMessage(response.data.message);
