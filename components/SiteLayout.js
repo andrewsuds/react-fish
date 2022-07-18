@@ -59,9 +59,9 @@ export default function SiteLayout({ children }) {
           )}
 
           <div className="flex fixed left-0 right-0 bottom-0 border-t border-gray-200 bg-white justify-around py-1">
-            <Link href="/">
+            <Link href="/home">
               <div className="p-[7.5px] hover:bg-gray-200 rounded-full">
-                {Router.pathname == "/" ? (
+                {Router.pathname == "/home" ? (
                   <RiHomeFill size={26} />
                 ) : (
                   <RiHomeLine size={26} />

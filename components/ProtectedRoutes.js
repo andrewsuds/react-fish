@@ -6,7 +6,15 @@ export default function ProtectedRoutes({ children }) {
   const Router = useRouter();
 
   useEffect(() => {
-    let unprotectedRoutes = ["/", "/home", "/login", "/signup", "/leaderboard"];
+    let unprotectedRoutes = [
+      "/",
+      "/home",
+      "/login",
+      "/signup",
+      "/leaderboard",
+      "/search",
+      "/map",
+    ];
 
     let pathIsProtected = unprotectedRoutes.indexOf(Router.pathname) === -1;
 
