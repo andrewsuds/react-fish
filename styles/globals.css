@@ -17,4 +17,5 @@
 
 .orientation {
   image-orientation: from-image;
+  filter: invert(100%);
 }
