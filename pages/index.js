@@ -18,7 +18,7 @@ export default function IndexPage() {
         />
       </div>
 
-      <div className="md:col-span-4 p-8">
+      <div className="md:col-span-4 m-8 justify-self-center md:justify-self-start">
         <div className="hidden md:flex pb-3 text-tblue">
           <GiFishBucket size={50} />
         </div>
