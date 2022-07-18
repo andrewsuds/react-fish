@@ -1,18 +1,19 @@
-import { useContext } from "react";
-import { UserContext } from "../lib/UserContext";
 import { useRouter } from "next/router";
-
+import { useContext, useEffect } from "react";
+import { UserContext } from "../lib/UserContext";
 export default function ProtectedRoutes({ children }) {
-  const Router = useRouter();
   const { user } = useContext(UserContext);
+  const Router = useRouter();
 
-  let unprotectedRoutes = ["/", "/home", "/login", "/signup"];
+  useEffect(() => {
+    let unprotectedRoutes = ["/", "/home", "/login", "/signup", "/leaderboard"];
 
-  let pathIsProtected = unprotectedRoutes.indexOf(Router.pathname) === -1;
+    let pathIsProtected = unprotectedRoutes.indexOf(Router.pathname) === -1;
 
-  if (!user && pathIsProtected) {
-    Router.push("/");
-  }
+    if (!user && pathIsProtected) {
+      Router.push("/");
+    }
+  });
 
   return children;
 }
