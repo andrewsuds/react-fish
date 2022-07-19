@@ -44,7 +44,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="max-w-sm mx-auto">
+    <div>
       <div className="top-0 sticky text-black backdrop-blur-lg bg-white/80 h-14 z-[1] flex items-center px-4 justify-center">
         <div
           className="absolute left-[16px] p-[7.5px] rounded-full hover:bg-gray-500/20 cursor-pointer"
