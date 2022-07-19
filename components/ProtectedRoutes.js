@@ -19,7 +19,7 @@ export default function ProtectedRoutes({ children }) {
     let pathIsProtected = unprotectedRoutes.indexOf(Router.pathname) === -1;
 
     if (!user && pathIsProtected) {
-      Router.push("/");
+      Router.replace("/");
     }
   });
 
