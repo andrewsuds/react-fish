@@ -1,18 +1,29 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { GiFishBucket } from "react-icons/gi";
+import Axios from "axios";
+import { BackendURL } from "../lib/BackendURL";
 
 export default function IndexPage() {
   const Router = useRouter();
+  const [picture, setPicture] = useState("/");
+
+  useEffect(() => {
+    Axios.get(`${BackendURL}/profile/randompic`).then((response) => {
+      console.log(response.data.picture);
+      setPicture(`${BackendURL}/images/${response.data.picture}`);
+    });
+  }, []);
   return (
     <div className="grid grid-cols-none md:grid-cols-9">
-      <div className="md:col-span-5 relative h-[350px] md:h-screen">
+      <div className="md:col-span-5 relative h-[350px] md:h-screen bg-white">
         <div className="absolute md:hidden top-[16px] left-[16px] text-tblue z-20">
           <GiFishBucket size={50} />
         </div>
         <Image
-          src={"/happening4.png"}
-          className="bg-tblue grayscale brightness-150"
+          src={picture}
+          className="grayscale brightness-150"
           layout="fill"
           objectFit="cover"
         />
