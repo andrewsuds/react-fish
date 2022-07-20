@@ -10,8 +10,12 @@ export default function IndexPage() {
   const [picture, setPicture] = useState("/");
 
   useEffect(() => {
+    Axios.get(`${BackendURL}/auth/login`).then((response) => {
+      if (response.data.loggedIn === true) {
+        Router.replace("/home");
+      }
+    });
     Axios.get(`${BackendURL}/profile/randompic`).then((response) => {
-      console.log(response.data.picture);
       setPicture(`${BackendURL}/images/${response.data.picture}`);
     });
   }, []);
@@ -22,6 +26,7 @@ export default function IndexPage() {
           <GiFishBucket size={50} />
         </div>
         <Image
+          priority={true}
           src={picture}
           className="grayscale brightness-150 z-10"
           layout="fill"
