@@ -17,16 +17,17 @@ export default function IndexPage() {
   }, []);
   return (
     <div className="grid grid-cols-none md:grid-cols-9">
-      <div className="md:col-span-5 relative h-[350px] md:h-screen bg-white">
+      <div className="md:col-span-5 relative h-[300px] md:h-screen">
         <div className="absolute md:hidden top-[16px] left-[16px] text-tblue z-20">
           <GiFishBucket size={50} />
         </div>
         <Image
           src={picture}
-          className="grayscale brightness-150"
+          className="grayscale brightness-150 z-10"
           layout="fill"
           objectFit="cover"
         />
+        <div className="h-full w-full bg-gray-200 animate-pulse" />
       </div>
 
       <div className="md:col-span-4 p-8 justify-self-center md:justify-self-start">
