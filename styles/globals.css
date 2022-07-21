@@ -9,7 +9,8 @@
   }
 
   div,
-  button {
+  button,
+  a {
     transition-property: background-color;
     transition-duration: 0.2s;
   }

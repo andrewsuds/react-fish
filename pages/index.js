@@ -21,7 +21,7 @@ export default function IndexPage() {
   }, []);
   return (
     <div className="grid grid-cols-none md:grid-cols-9">
-      <div className="md:col-span-5 relative h-[300px] md:h-screen">
+      <div className="md:col-span-5 relative h-[300px] md:h-full md:min-h-screen">
         <div className="absolute md:hidden top-[16px] left-[16px] text-tblue z-20">
           <GiFishBucket size={50} />
         </div>

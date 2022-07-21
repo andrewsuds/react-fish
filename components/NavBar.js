@@ -1,11 +1,16 @@
 import Image from "next/image";
+import { Menu } from "@headlessui/react";
 import { BackendURL } from "../lib/BackendURL";
-import { IoArrowBack } from "react-icons/io5";
 import { useRouter } from "next/router";
-import { GiFishingHook } from "react-icons/gi";
 import { UserContext } from "../lib/UserContext";
 import { useContext } from "react";
 import Link from "next/link";
+import { FaRegUser } from "react-icons/fa";
+import { FiSettings } from "react-icons/fi";
+import { MdLogout } from "react-icons/md";
+import { GiFishingHook } from "react-icons/gi";
+import { IoArrowBack } from "react-icons/io5";
+import Axios from "axios";
 
 export default function NavBar(props) {
   const { user, setUser } = useContext(UserContext);
@@ -21,18 +26,69 @@ export default function NavBar(props) {
             <IoArrowBack size={20} />
           </div>
         ) : (
-          <Link href="/settings">
-            <div className="w-[35px] h-[35px]">
+          <Menu as="div" className="relative w-[35px] h-[35px]">
+            <Menu.Button className="flex items-center justify-center rounded-full bg-gray-200 focus:outline-none">
               <Image
                 src={`${BackendURL}/avatars/${user}`}
-                className="rounded-full bg-gray-500/20"
+                className="rounded-full"
                 width={35}
                 height={35}
                 layout="fixed"
                 objectFit="cover"
               />
-            </div>
-          </Link>
+            </Menu.Button>
+
+            <Menu.Items className="absolute origin-top-left left-0 mt-3 w-[150px] rounded-md bg-white drop-shadow-md border border-gray-200 focus:outline-none cursor-pointer overflow-hidden">
+              <Link href="/bob">
+                <Menu.Item>
+                  {({ active }) => (
+                    <a
+                      className={`flex items-center p-4 ${
+                        active ? "bg-gray-100" : "hover:bg-gray-100"
+                      } `}
+                    >
+                      <FaRegUser size={16} className="mr-3" />
+                      Profile
+                    </a>
+                  )}
+                </Menu.Item>
+              </Link>
+
+              <Link href="/settings">
+                <Menu.Item>
+                  {({ active }) => (
+                    <a
+                      className={`flex items-center p-4 ${
+                        active ? "bg-gray-100" : "hover:bg-gray-100"
+                      } `}
+                    >
+                      <FiSettings size={16} className="mr-3" />
+                      Settings
+                    </a>
+                  )}
+                </Menu.Item>
+              </Link>
+
+              <Menu.Item
+                onClick={() => {
+                  Axios.post(`${BackendURL}/auth/logout`).then((response) => {
+                    Router.push("/");
+                  });
+                }}
+              >
+                {({ active }) => (
+                  <a
+                    className={`flex items-center p-4 ${
+                      active ? "bg-gray-100" : "hover:bg-gray-100"
+                    } `}
+                  >
+                    <MdLogout size={16} className="mr-3" />
+                    Log out
+                  </a>
+                )}
+              </Menu.Item>
+            </Menu.Items>
+          </Menu>
         )}
         <div className="font-bold text-lg ml-[26px]">{props.title}</div>
       </div>
