@@ -3,6 +3,7 @@ import { Menu } from "@headlessui/react";
 import { BackendURL } from "../lib/BackendURL";
 import { useRouter } from "next/router";
 import { UserContext } from "../lib/UserContext";
+import { AvatarContext } from "../lib/AvatarContext";
 import { useContext } from "react";
 import Link from "next/link";
 import { FaRegUser } from "react-icons/fa";
@@ -13,7 +14,8 @@ import { IoArrowBack } from "react-icons/io5";
 import Axios from "axios";
 
 export default function NavBar(props) {
-  const { user, setUser } = useContext(UserContext);
+  const { avatar } = useContext(AvatarContext);
+  const { user } = useContext(UserContext);
   const Router = useRouter();
   return (
     <div className="top-0 sticky text-black backdrop-blur-lg bg-white/80 h-14 z-[1] flex items-center px-4 justify-between">
@@ -29,7 +31,7 @@ export default function NavBar(props) {
           <Menu as="div" className="relative w-[35px] h-[35px]">
             <Menu.Button className="flex items-center justify-center rounded-full bg-gray-200 focus:outline-none">
               <Image
-                src={`${BackendURL}/avatars/${user}`}
+                src={`${BackendURL}/avatars/${avatar}`}
                 className="rounded-full"
                 width={35}
                 height={35}
@@ -39,7 +41,7 @@ export default function NavBar(props) {
             </Menu.Button>
 
             <Menu.Items className="absolute origin-top-left left-0 mt-3 w-[150px] rounded-md bg-white drop-shadow-md border border-gray-200 focus:outline-none cursor-pointer overflow-hidden">
-              <Link href="/bob">
+              <Link href={`/${user}`}>
                 <Menu.Item>
                   {({ active }) => (
                     <a

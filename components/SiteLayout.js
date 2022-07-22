@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Axios from "axios";
 import { UserContext } from "../lib/UserContext";
+import { AvatarContext } from "../lib/AvatarContext";
 import { useEffect, useContext } from "react";
 import { BackendURL } from "../lib/BackendURL";
-import Axios from "axios";
 import {
   RiHomeFill,
   RiHomeLine,
@@ -17,15 +18,18 @@ import { useRouter } from "next/router";
 
 export default function SiteLayout({ children }) {
   const { user, setUser } = useContext(UserContext);
+  const { avatar, setAvatar } = useContext(AvatarContext);
   Axios.defaults.withCredentials = true;
   const Router = useRouter();
 
   useEffect(() => {
     Axios.get(`${BackendURL}/auth/login`).then((response) => {
       if (response.data.loggedIn === true) {
-        setUser(response.data.avatar);
+        setUser(response.data.username);
+        setAvatar(response.data.avatar);
       } else {
         setUser("");
+        setAvatar("");
       }
     });
     console.log("Logged In: " + user);

@@ -13,7 +13,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const Router = useRouter();
 
   const login = () => {

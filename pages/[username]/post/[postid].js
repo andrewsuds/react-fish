@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState, useContext } from "react";
-import { UserContext } from "../../../lib/UserContext";
+import { AvatarContext } from "../../../lib/AvatarContext";
 import Image from "next/image";
 import Axios from "axios";
 import { BackendURL } from "../../../lib/BackendURL";
@@ -18,13 +18,13 @@ import { GiCirclingFish } from "react-icons/gi";
 
 export default function ProfilePostPage() {
   const Router = useRouter();
-  const { user, setUser } = useContext(UserContext);
+  const { avatar } = useContext(AvatarContext);
   const [post, setPost] = useState({});
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const { username, postid } = Router.query;
+  const { postid } = Router.query;
   useEffect(() => {
     if (!Router.isReady) return;
     Axios.get(`${BackendURL}/post/one/${postid}`).then((response) => {
@@ -192,7 +192,7 @@ export default function ProfilePostPage() {
           <div className="flex border-b px-4 py-3 border-gray-200 items-center">
             <div className="w-[62px] h-[50px] flex-none">
               <Image
-                src={`${BackendURL}/avatars/${user}`}
+                src={`${BackendURL}/avatars/${avatar}`}
                 className="rounded-full bg-gray-200"
                 width={50}
                 height={50}

@@ -5,14 +5,14 @@ import { BackendURL } from "../lib/BackendURL";
 import Image from "next/image";
 import { useState, useEffect, useContext } from "react";
 import Axios from "axios";
-import { UserContext } from "../lib/UserContext";
+import { AvatarContext } from "../lib/AvatarContext";
 
 export default function LeaderboardPage() {
   const [leaderboard, setLeaderboard] = useState([]);
   const [hours, setHours] = useState(24);
   const [tab, setTab] = useState("total-caught");
   const [loading, setLoading] = useState(true);
-  const { user } = useContext(UserContext);
+  const { avatar } = useContext(AvatarContext);
 
   const requestLeaderboard = (ihours, itab) => {
     setLoading(true);
@@ -37,7 +37,7 @@ export default function LeaderboardPage() {
           <div className="flex items-center">
             <div className="w-[35px] h-[35px]">
               <Image
-                src={`${BackendURL}/avatars/${user}`}
+                src={`${BackendURL}/avatars/${avatar}`}
                 className="rounded-full bg-gray-500/20"
                 width={35}
                 height={35}
