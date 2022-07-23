@@ -23,7 +23,7 @@ export default function IndexPage() {
         <Image
           priority={true}
           src={picture}
-          className="grayscale brightness-150 z-10"
+          className="grayscale brightness-125 z-10"
           layout="fill"
           objectFit="cover"
         />
