@@ -23,13 +23,33 @@ export default function SiteLayout({ children }) {
   const Router = useRouter();
 
   useEffect(() => {
+    let unprotectedRoutes = [
+      "/",
+      "/home",
+      "/login",
+      "/signup",
+      "/leaderboard",
+      "/search",
+      "/map",
+    ];
+
+    let pathIsProtected = unprotectedRoutes.indexOf(Router.pathname) === -1;
+
     Axios.get(`${BackendURL}/auth/login`).then((response) => {
       if (response.data.loggedIn === true) {
         setUser(response.data.username);
         setAvatar(response.data.avatar);
+
+        if (Router.pathname == "/" || Router.pathname == "/login") {
+          Router.replace("/home");
+        }
       } else {
         setUser("");
         setAvatar("");
+
+        if (pathIsProtected) {
+          Router.replace("/");
+        }
       }
     });
     console.log("Logged In: " + user);

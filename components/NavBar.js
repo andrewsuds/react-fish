@@ -29,10 +29,10 @@ export default function NavBar(props) {
           </div>
         ) : (
           <Menu as="div" className="relative w-[35px] h-[35px]">
-            <Menu.Button className="flex items-center justify-center rounded-full bg-gray-200 focus:outline-none">
+            <Menu.Button className="flex focus:outline-none">
               <Image
                 src={`${BackendURL}/avatars/${avatar}`}
-                className="rounded-full"
+                className="rounded-full bg-gray-200"
                 width={35}
                 height={35}
                 layout="fixed"

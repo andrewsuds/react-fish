@@ -19,9 +19,7 @@ function App({ Component, pageProps }) {
     <UserContext.Provider value={providerUser}>
       <AvatarContext.Provider value={providerAvatar}>
         <SiteLayout>
-          <ProtectedRoutes>
-            <Component {...pageProps} />
-          </ProtectedRoutes>
+          <Component {...pageProps} />
         </SiteLayout>
       </AvatarContext.Provider>
     </UserContext.Provider>

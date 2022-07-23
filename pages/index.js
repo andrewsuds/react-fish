@@ -10,11 +10,6 @@ export default function IndexPage() {
   const [picture, setPicture] = useState("/");
 
   useEffect(() => {
-    Axios.get(`${BackendURL}/auth/login`).then((response) => {
-      if (response.data.loggedIn === true) {
-        Router.replace("/home");
-      }
-    });
     Axios.get(`${BackendURL}/profile/randompic`).then((response) => {
       setPicture(`${BackendURL}/images/${response.data.picture}`);
     });

@@ -16,7 +16,8 @@ export default function LoginPage() {
   const { setUser } = useContext(UserContext);
   const Router = useRouter();
 
-  const login = () => {
+  const login = (e) => {
+    e.preventDefault();
     setLoading(true);
     Axios.post(`${BackendURL}/auth/login`, {
       username: username,
@@ -25,7 +26,7 @@ export default function LoginPage() {
       console.log(response.data);
       if (response.data.loggedIn == true) {
         setUser(response.data.username);
-        Router.push("/home");
+        Router.replace("/home");
       } else {
         setPassword("");
         setMessage(response.data.message);
@@ -50,47 +51,49 @@ export default function LoginPage() {
 
       <section className="px-8">
         <div className="text-2xl font-bold py-5">Log in to Fishbucket</div>
-        <div>
-          <input
-            className="w-full rounded-[4px] border-gray-300 focus:border-2 focus:border-tblue focus:ring-0 focus:shadow-sm"
-            type="text"
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-            value={username}
-            placeholder="Username"
-          />
-        </div>
+        <form onSubmit={login}>
+          <div>
+            <input
+              className="w-full rounded-[4px] border-gray-300 focus:border-2 focus:border-tblue focus:ring-0 focus:shadow-sm"
+              type="text"
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+              value={username}
+              placeholder="Username"
+            />
+          </div>
 
-        <div className="mt-3 mb-6">
-          <input
-            name="password"
-            className="w-full rounded-[4px] border-gray-300 focus:border-2 focus:border-tblue focus:ring-0 focus:shadow-sm"
-            type="password"
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-            value={password}
-            placeholder="Password"
-          />
-          <label
-            htmlFor="password"
-            className="text-base mt-2 inline-block text-red-500"
+          <div className="mt-3 mb-6">
+            <input
+              name="password"
+              className="w-full rounded-[4px] border-gray-300 focus:border-2 focus:border-tblue focus:ring-0 focus:shadow-sm"
+              type="password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              value={password}
+              placeholder="Password"
+            />
+            <label
+              htmlFor="password"
+              className="text-base mt-2 inline-block text-red-500"
+            >
+              {message}
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full flex bg-black hover:bg-black/80 rounded-full text-white font-bold text-center py-1.5 mt-3 cursor-pointer justify-center"
           >
-            {message}
-          </label>
-        </div>
-
-        <div
-          className="w-full flex bg-black hover:bg-black/80 rounded-full text-white font-bold text-center py-1.5 mt-3 cursor-pointer justify-center"
-          onClick={login}
-        >
-          {!loading ? (
-            "Log in"
-          ) : (
-            <GiCirclingFish className="animate-spin" size={24} />
-          )}
-        </div>
+            {!loading ? (
+              "Log in"
+            ) : (
+              <GiCirclingFish className="animate-spin" size={24} />
+            )}
+          </button>
+        </form>
 
         <div className="w-full hover:bg-gray-100 border border-gray-300 font-bold rounded-full text-center py-1.5 mt-6 cursor-pointer">
           Forgot password?
